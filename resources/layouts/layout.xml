@@ -1,0 +1,100 @@
+<layout id="MainLayout">
+    <!-- <label x="center" y="5" text="@Strings.prompt" color="Graphics.COLOR_WHITE" justification="Graphics.TEXT_JUSTIFY_CENTER" /> -->
+    <!--  <bitmap id="id_monkey" x="center" y="30" filename="../drawables/monkey.png" /> -->
+
+	<drawable id="TimeDisplay" class="TimeDisplay">
+		<param name="adjustY">-70</param>
+	</drawable>
+
+	<drawable id="SpeedMeter" class="ArcMeter">
+		<param name="centerX">:center</param>
+		<param name="centerY">:center</param>
+		<param name="radius">98</param>
+		<param name="strokeActive">20</param>
+		<param name="strokeInactive">2</param>
+		<param name="offsetDegrees">225</param>
+		<param name="arcDegrees">270</param>
+		<param name="direction">:clockwise</param>
+		<param name="numberDisplay">true</param>
+		<param name="numberOffsetX">0</param>
+		<param name="numberOffsetY">0</param>
+		<param name="numberFont">8</param><!-- Graphics.FONT_NUMBER_THAI_HOT -->
+		<param name="numberUnit">""</param>
+	</drawable>
+
+<!-- 	<label x="center" y="120" text="km/h" color="gMonoDarkColour" justification="Graphics.TEXT_JUSTIFY_CENTER" /> -->
+
+	<drawable class="TextField">
+		<param name="text">"km/h"</param>
+		<param name="centerX">:center</param>
+		<param name="centerY">:center</param>
+		<param name="adjustX">0</param>
+		<param name="adjustY">54</param>
+		<param name="font">2</param>
+	</drawable>
+
+	<drawable id="BatteryMeter" class="ArcMeter">
+		<param name="centerX">:center</param>
+		<param name="centerY">:center</param>
+		<param name="radius">80</param>
+		<param name="strokeActive">12</param>
+		<param name="strokeInactive">2</param>
+		<param name="offsetDegrees">225</param>
+		<param name="arcDegrees">90</param>
+		<param name="direction">:clockwise</param>
+		<param name="numberDisplay">true</param>
+		<param name="numberOffsetX">-20</param>
+		<param name="numberOffsetY">80</param>
+		<param name="numberFont">5</param><!-- Graphics.FONT_NUMBER_MILD -->
+		<param name="numberUnit">"%"</param>
+	</drawable>
+
+ 	<drawable id="TemperatureMeter" class="ArcMeter">
+		<param name="centerX">:center</param>
+		<param name="centerY">:center</param>
+		<param name="radius">80</param>
+		<param name="strokeActive">12</param>
+		<param name="strokeInactive">2</param>
+		<param name="offsetDegrees">315</param>
+		<param name="arcDegrees">90</param>
+		<param name="direction">:counter_clockwise</param>
+		<param name="numberDisplay">true</param>
+		<param name="numberOffsetX">20</param>
+		<param name="numberOffsetY">80</param>
+		<param name="numberFont">5</param><!-- Graphics.FONT_NUMBER_MILD -->
+		<param name="numberUnit">"c"</param>
+	</drawable>
+
+ 	<drawable id="PowerMeter" class="ArcMeter">
+		<param name="centerX">:center</param>
+		<param name="centerY">:center</param>
+		<param name="radius">70</param>
+		<param name="strokeActive">4</param>
+		<param name="strokeInactive">2</param>
+		<param name="offsetDegrees">330</param>
+		<param name="arcDegrees">60</param>
+		<param name="direction">:counter_clockwise</param>
+		<param name="numberDisplay">true</param>
+		<param name="numberOffsetX">50</param>
+		<param name="numberOffsetY">21</param>
+		<param name="numberFont">0</param><!-- Graphics.FONT_SYSTEM_XTINY -->
+		<param name="numberUnit">"w"</param>
+	</drawable>
+
+ 	<drawable id="IndicatorIcons" class="IndicatorIcons">
+	</drawable>
+ 
+<!-- 	<drawable id="SpeedMeter" class="ArcMeter"> -->
+<!-- 		<param name="side">:left</param> -->
+<!-- 		<param name="shape">:arc</param> -->
+<!-- 		<param name="stroke">8</param> -->
+<!-- 		<param name="height">160</param> -->
+<!-- 		<param name="separator">2</param> -->
+<!-- 	</drawable> -->
+	
+	<!-- Mask required for arc meter drawing without clip support -->
+<!--     <drawable class="ArcMeterMask"> -->
+<!-- 		<param name="stroke">8</param> -->
+<!--     </drawable> -->
+	
+</layout>

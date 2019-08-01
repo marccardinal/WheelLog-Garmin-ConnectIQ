@@ -1,0 +1,8 @@
+<properties>
+	<property id="theme" type="number">0</property>
+	<property id="hoursColourOverride" type="number">0</property>
+	<property id="minutesColourOverride" type="number">0</property>
+
+<!-- 	<property id="arcMeterStyle" type="number">0</property> -->
+	<property id="hideHoursLeadingZero" type="boolean">true</property>
+</properties>
