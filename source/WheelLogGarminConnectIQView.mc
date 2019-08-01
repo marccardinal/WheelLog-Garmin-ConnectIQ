@@ -193,7 +193,7 @@ class WheelLogGarminConnectIQView extends WatchUi.View {
 		mDrawables[:SpeedMeter].setValues(mSpeed, 40);	
 		mDrawables[:BatteryMeter].setValues(mBattery, 100);
 		mDrawables[:TemperatureMeter].setValues(mTemperature, 80);
-		mDrawables[:PowerMeter].setValues(mPower, 30);
+		mDrawables[:PowerMeter].setValues(mPower, 300);
 		mDrawables[:IndicatorIcons].setValues(mBluetooth);
 	}
 }
