@@ -4,11 +4,28 @@ using Toybox.WatchUi;
 
 class IndicatorIcons extends WatchUi.Drawable {
 
+	private var mBluetoothOffsetX;
+	private var mBluetoothOffsetY;
+	private var mBatteryOffsetX;
+	private var mBatteryOffsetY;
+	private var mTemperatureOffsetX;
+	private var mTemperatureOffsetY;
+	private var mPowerOffsetX;
+	private var mPowerOffsetY;
+
 	private var mBluetooth = false;
 
     function initialize(params) {
 		Drawable.initialize(params);
 
+		mBluetoothOffsetX   = params[:bluetoothOffsetX];
+		mBluetoothOffsetY   = params[:bluetoothOffsetY];
+		mBatteryOffsetX     = params[:batteryOffsetX];
+		mBatteryOffsetY     = params[:batteryOffsetY];
+		mTemperatureOffsetX = params[:temperatureOffsetX];
+		mTemperatureOffsetY = params[:temperatureOffsetY];
+		mPowerOffsetX       = params[:powerOffsetX];
+		mPowerOffsetY       = params[:powerOffsetY];
 	}
 
 	function setValues(bluetooth) {
@@ -25,8 +42,8 @@ class IndicatorIcons extends WatchUi.Drawable {
 
 		// Bluetooth
 		dc.drawText(
-			halfDCWidth - 50,
-			halfDCHeight,
+			halfDCWidth + mBluetoothOffsetX,
+			halfDCHeight + mBluetoothOffsetY,
 			gIconsFont,
 			"8",
 			Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
@@ -36,8 +53,8 @@ class IndicatorIcons extends WatchUi.Drawable {
 
 		// Power
 		dc.drawText(
-			halfDCWidth + 50,
-			halfDCHeight,
+			halfDCWidth + mPowerOffsetX,
+			halfDCHeight + mPowerOffsetY,
 			gIconsFont,
 			"6",
 			Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
@@ -45,8 +62,8 @@ class IndicatorIcons extends WatchUi.Drawable {
 
 		// Battery
 		dc.drawText(
-			halfDCWidth - 50,
-			halfDCHeight + 80,
+			halfDCWidth + mBatteryOffsetX,
+			halfDCHeight + mBatteryOffsetY,
 			gIconsFont,
 			"9",
 			Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
@@ -54,8 +71,8 @@ class IndicatorIcons extends WatchUi.Drawable {
 
 		// Thermometer
 		dc.drawText(
-			halfDCWidth + 50,
-			halfDCHeight + 80,
+			halfDCWidth + mTemperatureOffsetX,
+			halfDCHeight + mTemperatureOffsetY,
 			gIconsFont,
 			"<",
 			Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER

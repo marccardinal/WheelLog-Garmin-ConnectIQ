@@ -6,7 +6,7 @@
 	<drawable id="SpeedMeter" class="ArcMeter">
 		<param name="centerX">:center</param>
 		<param name="centerY">:center</param>
-		<param name="radius">98</param>
+		<param name="radius">108</param>
 		<param name="strokeActive">20</param>
 		<param name="strokeInactive">2</param>
 		<param name="offsetDegrees">225</param>
@@ -24,14 +24,14 @@
 		<param name="centerX">:center</param>
 		<param name="centerY">:center</param>
 		<param name="adjustX">0</param>
-		<param name="adjustY">54</param>
+		<param name="adjustY">50</param>
 		<param name="font">2</param>
 	</drawable>
 
 	<drawable id="BatteryMeter" class="ArcMeter">
 		<param name="centerX">:center</param>
 		<param name="centerY">:center</param>
-		<param name="radius">80</param>
+		<param name="radius">90</param>
 		<param name="strokeActive">12</param>
 		<param name="strokeInactive">2</param>
 		<param name="offsetDegrees">225</param>
@@ -40,14 +40,14 @@
 		<param name="numberDisplay">true</param>
 		<param name="numberOffsetX">-20</param>
 		<param name="numberOffsetY">80</param>
-		<param name="numberFont">1</param><!-- Graphics.FONT_TINY -->
+		<param name="numberFont">0</param><!-- Graphics.FONT_XTINY -->
 		<param name="numberUnit">"%"</param>
 	</drawable>
 
  	<drawable id="TemperatureMeter" class="ArcMeter">
 		<param name="centerX">:center</param>
 		<param name="centerY">:center</param>
-		<param name="radius">80</param>
+		<param name="radius">90</param>
 		<param name="strokeActive">12</param>
 		<param name="strokeInactive">2</param>
 		<param name="offsetDegrees">315</param>
@@ -56,34 +56,34 @@
 		<param name="numberDisplay">true</param>
 		<param name="numberOffsetX">20</param>
 		<param name="numberOffsetY">80</param>
-		<param name="numberFont">1</param><!-- Graphics.FONT_TINY -->
+		<param name="numberFont">0</param><!-- Graphics.FONT_XTINY -->
 		<param name="numberUnit">"c"</param>
 	</drawable>
 
  	<drawable id="PowerMeter" class="ArcMeter">
 		<param name="centerX">:center</param>
 		<param name="centerY">:center</param>
-		<param name="radius">70</param>
+		<param name="radius">75</param>
 		<param name="strokeActive">4</param>
 		<param name="strokeInactive">2</param>
-		<param name="offsetDegrees">330</param>
-		<param name="arcDegrees">60</param>
+		<param name="offsetDegrees">15</param>
+		<param name="arcDegrees">30</param>
 		<param name="direction">:counter_clockwise</param>
 		<param name="numberDisplay">true</param>
-		<param name="numberOffsetX">50</param>
+		<param name="numberOffsetX">60</param>
 		<param name="numberOffsetY">21</param>
 		<param name="numberFont">0</param><!-- Graphics.FONT_XTINY -->
 		<param name="numberUnit">"w"</param>
 	</drawable>
 
  	<drawable id="IndicatorIcons" class="IndicatorIcons">
- 		<param name="bluetoothOffsetX">-50</param>
+ 		<param name="bluetoothOffsetX">-60</param>
  		<param name="bluetoothOffsetY">0</param>
  		<param name="batteryOffsetX">-50</param>
  		<param name="batteryOffsetY">80</param>
  		<param name="temperatureOffsetX">50</param>
  		<param name="temperatureOffsetY">80</param>
- 		<param name="powerOffsetX">50</param>
+ 		<param name="powerOffsetX">60</param>
  		<param name="powerOffsetY">0</param>
 	</drawable>
 	
