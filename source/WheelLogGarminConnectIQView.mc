@@ -28,13 +28,17 @@ class WheelLogGarminConnectIQView extends WatchUi.View {
 	private var mBluetooth = false;
 	private var mPower = 0;
 	
-	private var mTimer;
+	private var mHttpPort = null;
+	private var mTimerHttp = null;
+	
+	private var mTimerUI;
 
 	// Cache references to drawables immediately after layout, to avoid expensive findDrawableById() calls in onUpdate();
 	private var mDrawables = {};
 
     function initialize() {
-    	mTimer = new Timer.Timer();
+    	mTimerUI = new Timer.Timer();
+    	mTimerHttp = new Timer.Timer();
     	Communications.setMailboxListener(method(:onMail));   	
     
         View.initialize();
@@ -61,8 +65,8 @@ class WheelLogGarminConnectIQView extends WatchUi.View {
 	function parseMessage(message) {
 		var type = message.get(WheelLogGarminConnectIQConstants.KEY_MSG_TYPE);
 		var data = message.get(WheelLogGarminConnectIQConstants.KEY_MSG_DATA);
-		
-		if (type == null or data == null) {
+			
+		if (type == null or data == null) {	
 			return;
 		}
 		
@@ -72,6 +76,27 @@ class WheelLogGarminConnectIQView extends WatchUi.View {
 			mTemperature = data.get(WheelLogGarminConnectIQConstants.KEY_TEMPERATURE);
 			mBluetooth   = data.get(WheelLogGarminConnectIQConstants.KEY_BT_STATE);
 			mPower       = data.get(WheelLogGarminConnectIQConstants.KEY_POWER).abs();
+		} else if (type == WheelLogGarminConnectIQConstants.MESSAGE_TYPE_HTTP_READY) {
+			mHttpPort    = data.get(WheelLogGarminConnectIQConstants.KEY_HTTP_PORT);
+			mTimerHttp.start(method(:onTimerHttp), 1500, true);
+		}
+	}
+
+	function parseMessageHttp(message) {
+		var type = message.get(WheelLogGarminConnectIQConstants.KEY_MSG_TYPE.toString());
+		var data = message.get(WheelLogGarminConnectIQConstants.KEY_MSG_DATA.toString());
+			
+		if (type == null or data == null) {
+			return;
+		}
+		
+		if (type == WheelLogGarminConnectIQConstants.MESSAGE_TYPE_EUC_DATA) {
+			mSpeed       = data.get(WheelLogGarminConnectIQConstants.KEY_SPEED.toString());
+			mBattery     = data.get(WheelLogGarminConnectIQConstants.KEY_BATTERY.toString());
+			mTemperature = data.get(WheelLogGarminConnectIQConstants.KEY_TEMPERATURE.toString());
+			mBluetooth   = data.get(WheelLogGarminConnectIQConstants.KEY_BT_STATE.toString());
+			mPower       = data.get(WheelLogGarminConnectIQConstants.KEY_POWER.toString()).abs();
+			WatchUi.requestUpdate();
 		}
 	}
 
@@ -86,7 +111,7 @@ class WheelLogGarminConnectIQView extends WatchUi.View {
     // the state of this View and prepare it to be shown. This includes
     // loading resources into memory.
     function onShow() {
-    	mTimer.start(method(:onTimer), 5000, true);
+    	mTimerUI.start(method(:onTimerUI), 5000, true);
     }
 
     // Update the view
@@ -97,15 +122,31 @@ class WheelLogGarminConnectIQView extends WatchUi.View {
         View.onUpdate(dc);
     }
 
-	function onTimer() {
+	function onTimerUI() {
 		WatchUi.requestUpdate();
+	}
+	
+	function onTimerHttp() {
+		var options = {
+			:method => Communications.HTTP_REQUEST_METHOD_GET,
+			:headers => {},
+			:responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON,
+		};
+		Communications.makeWebRequest("http://127.0.0.1:" + mHttpPort + "/data", null, options, method(:onHttpResponse));
+	}
+
+	function onHttpResponse(responseCode, data) {
+		System.println("code:" + responseCode + ", data:" + data);
+		if (responseCode == 200) {
+			parseMessageHttp(data);
+		}
 	}
 
     // Called when this View is removed from the screen. Save the
     // state of this View here. This includes freeing resources from
     // memory.
     function onHide() {
-    	mTimer.stop();
+    	mTimerUI.stop();
     }
        
     function updateFonts() {

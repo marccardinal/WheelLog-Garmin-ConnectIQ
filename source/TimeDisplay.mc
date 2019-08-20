@@ -5,18 +5,13 @@ using Toybox.WatchUi;
 class TimeDisplay extends WatchUi.Drawable {
 
 	var mAdjustY;
-	var mHoursFont;
-	var mMinutesFont;
+	var mTimeFont;
 
     function initialize(params) {
 		Drawable.initialize(params);
 
-		if (params[:adjustY] != null) {
-			mAdjustY = params[:adjustY];
-		}
-		
-		mHoursFont = WatchUi.loadResource(Rez.Fonts.HoursFont);
-		mMinutesFont = WatchUi.loadResource(Rez.Fonts.MinutesFont);
+		mAdjustY = params[:adjustY] == null ? 0 : params[:adjustY];
+		mTimeFont = params[:timeFont] == null ? Graphics.FONT_TINY : params[:timeFont];		
 	}
 
 	function draw(dc) {
@@ -39,8 +34,7 @@ class TimeDisplay extends WatchUi.Drawable {
 		dc.drawText(
 			halfDCWidth,
 			halfDCHeight,
-//			mHoursFont,
-			Graphics.FONT_TINY,
+			mTimeFont,
 			hours + ":" + minutes + amPmText,
 			Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
 		);

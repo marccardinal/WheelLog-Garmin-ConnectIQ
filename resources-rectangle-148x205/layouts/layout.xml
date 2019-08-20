@@ -1,6 +1,7 @@
 <layout id="MainLayout">
 	<drawable id="TimeDisplay" class="TimeDisplay">
 		<param name="adjustY">-95</param>
+		<param name="timeFont">3</param><!-- Graphics.FONT_MEDIUM -->
 	</drawable>
 
 	<drawable id="SpeedMeter" class="BarMeter">
@@ -40,7 +41,7 @@
 		<param name="numberDisplay">true</param>
 		<param name="numberOffsetX">-30</param>
 		<param name="numberOffsetY">75</param>
-		<param name="numberFont">1</param><!-- Graphics.FONT_TINY -->
+		<param name="numberFont">3</param><!-- Graphics.FONT_MEDIUM -->
 		<param name="numberUnit">"%"</param>
 	</drawable>
 
@@ -56,7 +57,7 @@
 		<param name="numberDisplay">true</param>
 		<param name="numberOffsetX">30</param>
 		<param name="numberOffsetY">75</param>
-		<param name="numberFont">1</param><!-- Graphics.FONT_TINY -->
+		<param name="numberFont">3</param><!-- Graphics.FONT_MEDIUM -->
 		<param name="numberUnit">"c"</param>
 	</drawable>
 
